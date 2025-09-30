@@ -15,6 +15,8 @@ const sequelize = new Sequelize(database, dbuser, dbpassword,{
 
 db.User = require('../models/user.js')(sequelize, Sequelize);
 db.Profile = require('../models/profile.js')(sequelize, Sequelize);
+db.User.hasOne(db.Profile, { foreignKey: "userId", onDelete: "CASCADE" });
+db.Profile.belongsTo(db.User, { foreignKey: "userId" });
 sequelize.sync() 
 sequelize.authenticate()
 .then(() => {
