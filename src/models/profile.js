@@ -1,4 +1,4 @@
-const User = require('./user');
+const User = require("./user")(sequelize, DataTypes);
 module.exports = (sequelize, DataTypes) => {
 const Profile = sequelize.define("Profile", {
   bio: {
@@ -9,7 +9,7 @@ const Profile = sequelize.define("Profile", {
   },
 });
  
-// One-to-One relation
+//One-to-One relation
 User.hasOne(Profile, { foreignKey: "userId", onDelete: "CASCADE" });
 Profile.belongsTo(User, { foreignKey: "userId" });
 }

@@ -13,7 +13,8 @@ const sequelize = new Sequelize(database, dbuser, dbpassword,{
   dialect: "mysql"
 });
 
-db.User = require('../models/profile.js')(sequelize, Sequelize);
+db.User = require('../models/user.js')(sequelize, Sequelize);
+db.Profile = require('../models/profile.js')(sequelize, Sequelize);
 sequelize.sync() 
 sequelize.authenticate()
 .then(() => {

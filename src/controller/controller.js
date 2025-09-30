@@ -1,6 +1,9 @@
+//  const User = require("../models/user");
+//  const Profile = require("../models/profile");
 const db = require('../config/db');
-//const User = db.User;
-module.exports = (sequelize, DataTypes) => {
+const User = db.User;
+const Profile = db.Profile;
+ 
 const createUser = async (req, res) => {
   try {
     const { name, email, bio, age } = req.body;
@@ -19,5 +22,5 @@ const createUser = async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 };
-}
-//module.exports = { createUser };
+
+module.exports = { createUser };
