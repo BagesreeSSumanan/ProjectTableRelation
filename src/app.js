@@ -3,7 +3,7 @@ const config = require('./config/config');
 const app = express();
 require('dotenv').config();
 const empRouter = express.Router();
-const { createUser,}= require('./controller/controller');
+const { createUser,GetUser,GetAllUser,UpdateUser,DeleteUser}= require('./controller/controller');
 app.use(express.json());
 
 const PORT = config.port;
@@ -11,21 +11,9 @@ app.listen(PORT, () => {
     console.log(`Example app listening on port ${PORT}`);
 });
 
-// app.use('/api', empRouter);
-//   empRouter.post('/createUser',  async (req, res, next)=>{
-//      try{
-//          const name = req.body.name;
-//          const email = req.body.email;
-//          const bio = req.body.bio;
-//          const age = req.body.age;
-//                if (!name || !email) {
-//                  return res.sendStatus(400);
-//               }
-//          const Newuser =  await createUser(name,email,bio,age).then(() => res.json({ message: 'User created.' }));
- 
-//      } catch(e){
-//          console.log(e);
-//          res.sendStatus(400);
-//      }
-//   });
-app.post('/createUser', createUser);
+app.use('/api', empRouter);
+empRouter.post('/createUser', createUser);
+empRouter.get('/GetUser', GetUser);
+empRouter.get('/GetAllUser', GetAllUser);
+empRouter.put('/UpdateUser', UpdateUser);
+empRouter.delete('/DeleteUser', DeleteUser);
