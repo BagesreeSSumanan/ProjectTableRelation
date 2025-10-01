@@ -81,7 +81,7 @@ const UpdateUser = async (req, res) => {
 const DeleteUser = async (req, res) => {
   try { 
     const { id } = req.body;
-    const user = await User.findByPk(id, { include: Profile });
+    const user = await User.findByPk(id);
 
     await user.destroy();
 
